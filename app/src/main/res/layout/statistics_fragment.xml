@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/statistics_fragment"
+    android:background="@drawable/background1zmiana"
+
+    >
+<!--
+384dp szerokosc
+-->
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphViewStatistics"
+        android:layout_width="354dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/inBedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/textColor"
+        android:text="In bed: 23:35 - 8:24"
+        android:textAllCaps="false"
+        android:layout_marginTop="325dp"
+        android:layout_marginLeft="25dp"
+        />
+
+    <TextView
+        android:id="@+id/timeOfSleepTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/textColor"
+        android:text="Time of sleep: 8h and 59m"
+        android:textAllCaps="false"
+        android:layout_marginTop="345dp"
+        android:layout_marginLeft="25dp"
+        />
+
+    <TextView
+        android:id="@+id/qualityOfSleepTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/textColor"
+        android:text="Quality of sleep: 75%"
+        android:textAllCaps="false"
+        android:layout_marginTop="365dp"
+        android:layout_marginLeft="25dp"
+        />
+
+</RelativeLayout>

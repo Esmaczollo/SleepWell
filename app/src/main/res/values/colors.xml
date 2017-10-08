@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <item name="enableIconColor" type="color">#388e3c</item>
+    <item name="numberPickerColor" type="color">#ffffff</item>
+    <item name="disableIconColor" type="color">#AAe0e0e0</item>
+    <item name="textColor" type="color">#DDffffff</item>
+
+    <integer-array name="androidcolors">
+        <item>@color/enableIconColor</item>
+        <item>@color/numberPickerColor</item>
+        <item>@color/disableIconColor</item>
+        <item>@color/textColor</item>
+    </integer-array>
+
+</resources>

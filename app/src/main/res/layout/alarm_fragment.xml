@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alarm_fragment"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background1zmiana"
+
+    >
+
+    <!--
+          Tu dodałem dodatkowe atrybuty: divider które mozna edytowac bo zostala dodany
+       projekt z githuba
+          -->
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:timePickerMode="spinner"
+        android:layout_marginTop="25dp"
+        android:numbersInnerTextColor="#388e3c"
+        android:animateLayoutChanges="true"
+        />
+
+
+    <TextView
+        android:id="@+id/wakeUpTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="235dp"
+        android:textSize="17sp"
+        android:textColor="@color/textColor"
+        android:text="You will wake up..."
+
+        />
+
+    <TextView
+        android:id="@+id/timeOfSleepTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:textSize="17sp"
+        android:textColor="@color/textColor"
+        android:text="How long you want to sleep?"
+        />
+
+
+    <Button
+        android:id="@+id/setAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Alarm"
+        android:textAllCaps="false"
+        android:textColor="#DDffffff"
+        android:background="@android:color/transparent"
+        android:textSize="40sp"
+        android:layout_marginTop="320dp"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconTint="@drawable/navigation_color_state"
+        app:itemTextColor="@drawable/navigation_color_state"
+        app:menu="@menu/bottom_navigation_main"
+        />
+
+</RelativeLayout>

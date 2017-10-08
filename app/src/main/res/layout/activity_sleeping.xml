@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.maciek.sleepwell.SleepingActivity.SleepingActivity"
+    android:id="@+id/activity_sleeping"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background1zmiana"
+    android:padding="0dp"
+    >
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:textColor="@color/textColor"
+        android:textSize="50sp"
+        />
+
+    <TextView
+        android:id="@+id/wakeUpTVSleepingActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:text="You will wake up between"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/wakeUpTVSleepingActivityHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:text="GetHourMate"
+        />
+
+    <!--<Button-->
+        <!--style="@style/Widget.AppCompat.Button.Small"-->
+        <!--android:id="@+id/backButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:drawableLeft="@drawable/ic_back"-->
+        <!--android:text="Back"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textColor="@color/textColor"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--/>-->
+
+
+    <Button
+        android:id="@+id/swapButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/ic_swap"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap and hold"
+        android:textSize="20dp"
+        android:textColor="@color/textColor"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/swapButton"
+        android:layout_marginTop="-30dp"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>

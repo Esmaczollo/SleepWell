@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/settings_fragment"
+    android:padding="0dp"
+    >
+<!--
+384dp
+px = dp * (dpi / 160)
+1080x1920 xxhdpi  2.625
+-->
+    <Button
+        android:id="@+id/buttonSound"
+        android:drawableTop="@drawable/ic_sound"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Sound"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_marginRight="118dp"
+        android:layout_alignRight="@+id/buttonInterval"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/buttonInterval"
+        android:drawableTop="@drawable/ic_interval"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Interval"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/buttonData"
+        android:drawableTop="@drawable/ic_data"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Data"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginLeft="118dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_alignLeft="@+id/buttonInterval"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/button4"
+        android:drawableTop="@drawable/ic_notes"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Diary"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/buttonSound"
+        android:layout_marginRight="118dp"
+        android:layout_alignRight="@+id/button5"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/button5"
+        android:drawableTop="@drawable/ic_statistics"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Statistics"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/buttonInterval"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/button6"
+        android:drawableTop="@drawable/ic_account"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Account"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginLeft="118dp"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/buttonData"
+        android:layout_alignLeft="@+id/button5"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/buttonAccount"
+        android:drawableTop="@drawable/ic_advanced"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Advanced"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/button4"
+        android:layout_marginRight="118dp"
+        android:layout_alignRight="@+id/buttonHelp"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/buttonHelp"
+        android:drawableTop="@drawable/ic_help"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="Help"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/button5"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+    <Button
+        android:id="@+id/buttonAbout"
+        android:drawableTop="@drawable/ic_about"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:text="About"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:layout_marginLeft="118dp"
+        android:layout_marginTop="118dp"
+        android:layout_alignTop="@+id/button6"
+        android:layout_alignLeft="@+id/buttonHelp"
+        android:backgroundTint="#AA388e3c"
+        android:padding="20dp"
+        android:textColor="#ffffff"
+        />
+
+
+</RelativeLayout>
