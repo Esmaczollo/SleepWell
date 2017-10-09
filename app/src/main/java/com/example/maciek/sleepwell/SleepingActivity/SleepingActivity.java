@@ -33,7 +33,6 @@ public class SleepingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         extraString = intent.getStringExtra("firstTimeOfWakeUp");
 
-
         swapButton = (Button) findViewById(R.id.swapButton);
         textClock = (TextClock)findViewById(R.id.textClock);
         wakeUpTVSleepingActivityHour = (TextView)findViewById(R.id.wakeUpTVSleepingActivityHour);
@@ -74,16 +73,21 @@ public class SleepingActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 /*Thats how we start new activity and kill the old one*/
                 Intent intent = new Intent(SleepingActivity.this, ProgressActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
-                return false;
+                return true;
             }
         });
 
         textClockVisualChanges();
         setWakeUpTIme(extraString);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
 
     private void textClockVisualChanges(){
         textClock.is24HourModeEnabled();

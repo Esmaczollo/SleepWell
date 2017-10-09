@@ -56,12 +56,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.bottom_navigation_main,menu);
         return true;
     }
+
+
 
     private void SetScreen() {
         View decorView = getWindow().getDecorView();
