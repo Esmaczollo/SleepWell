@@ -14,17 +14,50 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 
-        />
-<!--
-    <FrameLayout
-        android:id="@+id/frameLayoutVirtualization"
-        android:layout_width="fill_parent"
-        android:layout_height="130dp"
-        android:background="@android:color/holo_green_dark"
-        android:layout_above="@+id/bottom_navigation"
-        />
--->
+        >
 
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonUserTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserTable"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="290dp"
+        android:textSize="12dp"
+        />
+
+    <Button
+        android:id="@+id/buttonAllDreamsTableTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AllDreamsTableTable"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="330dp"
+        android:textSize="12dp"
+        />
+
+    <Button
+        android:id="@+id/buttonCurrentDreamTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CurrentDreamTable"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:textSize="12dp"
+        />
+
+    <Button
+        android:id="@+id/buttonCreateDataBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CreateDataBase"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="410dp"
+        android:textSize="12dp"
+        />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

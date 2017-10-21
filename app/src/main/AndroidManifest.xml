@@ -13,13 +13,11 @@
         <activity android:name=".MainActivity.Fragments.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity.MainActivity" />
         <activity android:name=".SleepingActivity.SleepingActivity" />
-        <activity android:name=".AudioProcessing" />
         <activity android:name=".SleepingActivity.ProgressActivity"></activity>
     </application>
 
