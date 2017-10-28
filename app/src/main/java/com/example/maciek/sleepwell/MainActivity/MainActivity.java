@@ -1,5 +1,6 @@
 package com.example.maciek.sleepwell.MainActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.maciek.sleepwell.DataBase.DataBase;
 import com.example.maciek.sleepwell.MainActivity.Fragments.AlarmFragment;
@@ -19,10 +21,11 @@ import com.example.maciek.sleepwell.MainActivity.Fragments.SettingsFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.StatisticsFragment;
 import com.example.maciek.sleepwell.R;
 
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    Context contextMain = this;
     DataBase dataBase;
     Button buttonUserTable;
     Button buttonAllDreamsTableTable;
@@ -42,33 +45,78 @@ public class MainActivity extends AppCompatActivity {
         buttonCurrentDreamTable = (Button) findViewById(R.id.buttonCurrentDreamTable);
         buttonCreateDataBase = (Button) findViewById(R.id.buttonCreateDataBase);
 
+        dataBase = new DataBase(this);
+
         buttonUserTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Kliknelo buttonUserTable");
+                Cursor cursor = dataBase.getAllData();
 
+                if(cursor.getCount() == 0){
+                    Toast.makeText(MainActivity.this, "There is no data", Toast.LENGTH_SHORT).show();
+                }
+
+                StringBuffer buffer = new StringBuffer();
+
+                while(cursor.moveToNext())
+                {
+                    buffer.append("ID :" + cursor.getString(0) + "\n");
+                    buffer.append("USER_NAME :" + cursor.getString(1) + "\n\n");
+                }
+
+                System.out.println(buffer.toString());
             }
         });
 
         buttonAllDreamsTableTable.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+                public void onClick(View v) {
+                boolean isUpdated = dataBase.updateDate(1, "Maciek - UPDATE");
+                if(isUpdated == true)
+                {
+                    Toast.makeText(MainActivity.this, "Data updated correctly", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Error while updating data", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         buttonCurrentDreamTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Integer deletedRows = dataBase.deleteData(1);
+                if(deletedRows > 0)
+                {
+                    Toast.makeText(MainActivity.this, "Some row was deleted", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "No row deleted", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         buttonCreateDataBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("1. Kliknelo buttonCreateDataBase");
-                dataBase = new DataBase(contextMain);
-                dataBase.getReadableDatabase();
-                System.out.println("2. Powinna utworzyć się baza danych");
+                System.out.println("Kliknelo buttonCreateDataBase");
+                Random rand = new Random();
+                int randInt = rand.nextInt(100);
+                String rowContent = "Maciek - " + randInt;
+                boolean isInserted = dataBase.insertData(rowContent);
+
+                if(isInserted == true)
+                {
+                    Toast.makeText(MainActivity.this, "Data inserted correctly", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Error while inserting data", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         /*  TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST*/

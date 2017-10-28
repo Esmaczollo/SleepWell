@@ -12,8 +12,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBase extends SQLiteOpenHelper {
 
-    public static final String TAG = "DataBase";
-
     //columns of the UserTable
     public static final String TABLE_USER_TABLE = "USER_TABLE";
     public static final String COLUMNN_USER_TABLE_USER_ID = "USER_ID";
@@ -45,8 +43,6 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String COLUMN_CURRENT_DREAM_TABLE_SLEEP_ID = "SLEEP_ID";
 
 
-    public static final String DATABASE_NAME ="DataBase.db";
-    public static final int DATABASE_VERSION = 1;
 
     //SQL statement of UserTable creation
     public static final String SQL_CREATE_TABLE_USER_TABLE= "CREATE TABLE " + TABLE_USER_TABLE + "("
@@ -81,37 +77,23 @@ public class DataBase extends SQLiteOpenHelper {
             + ");";
 
 
+
+    public static final String TAG = "DataBase";
+    public static final String DATABASE_NAME ="DataBase.db";
+    public static final int DATABASE_VERSION = 1;
+
+
     public DataBase(Context context){
-
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        System.out.println("Konstruktor DataBase");
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        String dropTable = "DROP TABLE IF EXISTS ";
-
-        db.execSQL(dropTable + TABLE_USER_TABLE);
-        db.execSQL(dropTable + TABLE_ALL_DREAMS_TABLE);
-        db.execSQL(dropTable + TABLE_CURRENT_DREAM_TABLE);
-
-        System.out.println("Tworzenie tabel: START");
+        System.out.println("We get into onCreate");
         db.execSQL(SQL_CREATE_TABLE_USER_TABLE);
         //db.execSQL(SQL_CREATE_TABLE_ALL_DREAMS_TABLE);
         //db.execSQL(SQL_CREATE_TABLE_CURRENT_DREAM_TABLE);
-        System.out.println("Tworzenie tabel: STOP");
 
-        db = getReadableDatabase();
-        Cursor dbCursor = db.query(TABLE_USER_TABLE, null, null, null, null, null, null);
-        String[] columnNames = dbCursor.getColumnNames();
-        //System.out.println(columnNames);
-
-//        for (String s : columnNames)
-//        {
-//            System.out.println(s);
-//        }
     }
 
     @Override
@@ -119,11 +101,51 @@ public class DataBase extends SQLiteOpenHelper {
         String dropTable = "DROP TABLE IF EXISTS ";
 
         db.execSQL(dropTable + TABLE_USER_TABLE);
-        db.execSQL(dropTable + TABLE_ALL_DREAMS_TABLE);
-        db.execSQL(dropTable + TABLE_CURRENT_DREAM_TABLE);
+        //db.execSQL(dropTable + TABLE_ALL_DREAMS_TABLE);
+        //db.execSQL(dropTable + TABLE_CURRENT_DREAM_TABLE);
 
         onCreate(db);
     }
 
+    public boolean insertData(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNN_USER_TABLE_USER_NAME, name);
+//         jeżeli byłaby kolumna surname to wszystko zostaje tak samo tzn. db.insert zostaje takie jak już jest
+//        contentValues.put(COLUMNN_USER_TABLE_SURNAME, suranem);
+        long result = db.insert(TABLE_USER_TABLE, null, contentValues);
+
+        if(result == -1)
+        {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public Cursor getAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER_TABLE, null);
+        return cursor;
+    }
+
+    public boolean updateDate(int id, String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNN_USER_TABLE_USER_NAME, name);
+//         jeżeli byłaby kolumna surname to wszystko zostaje tak samo tzn. db.insert zostaje takie jak już jest
+//        contentValues.put(COLUMNN_USER_TABLE_SURNAME, suranem);
+        String idString = Integer.toString(id);
+        db.update(TABLE_USER_TABLE, contentValues, COLUMNN_USER_TABLE_USER_ID + " = ?", new String[] {idString});
+        return true;
+    }
+
+    public Integer deleteData(int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idString = Integer.toString(id);
+        return db.delete(TABLE_USER_TABLE, COLUMNN_USER_TABLE_USER_ID + " = ?", new String[] {idString});
+    }
 
 }
