@@ -21,7 +21,7 @@ px = dp * (dpi / 160)
         android:layout_marginTop="7.5dp"
         android:layout_marginRight="118dp"
         android:layout_alignRight="@+id/buttonInterval"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -36,7 +36,7 @@ px = dp * (dpi / 160)
         android:textSize="17dp"
         android:layout_marginTop="7.5dp"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -52,7 +52,7 @@ px = dp * (dpi / 160)
         android:layout_marginLeft="118dp"
         android:layout_marginTop="7.5dp"
         android:layout_alignLeft="@+id/buttonInterval"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -69,7 +69,7 @@ px = dp * (dpi / 160)
         android:layout_alignTop="@+id/buttonSound"
         android:layout_marginRight="118dp"
         android:layout_alignRight="@+id/button5"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -85,7 +85,7 @@ px = dp * (dpi / 160)
         android:layout_centerHorizontal="true"
         android:layout_marginTop="118dp"
         android:layout_alignTop="@+id/buttonInterval"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -102,7 +102,7 @@ px = dp * (dpi / 160)
         android:layout_marginTop="118dp"
         android:layout_alignTop="@+id/buttonData"
         android:layout_alignLeft="@+id/button5"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -119,7 +119,7 @@ px = dp * (dpi / 160)
         android:layout_alignTop="@+id/button4"
         android:layout_marginRight="118dp"
         android:layout_alignRight="@+id/buttonHelp"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -135,7 +135,7 @@ px = dp * (dpi / 160)
         android:layout_marginTop="118dp"
         android:layout_alignTop="@+id/button5"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
@@ -152,7 +152,7 @@ px = dp * (dpi / 160)
         android:layout_marginTop="118dp"
         android:layout_alignTop="@+id/button6"
         android:layout_alignLeft="@+id/buttonHelp"
-        android:backgroundTint="#AA388e3c"
+        android:background="#00388e3c"
         android:padding="20dp"
         android:textColor="#ffffff"
         />
