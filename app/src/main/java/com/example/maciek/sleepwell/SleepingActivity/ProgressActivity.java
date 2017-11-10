@@ -6,7 +6,7 @@ import android.widget.ProgressBar;
 
 import com.example.maciek.sleepwell.R;
 
-public class ProgressActivity extends AppCompatActivity {
+public class ProgressActivity extends AppCompatActivity implements Runnable{
 
     ProgressBar progressBar;
 
@@ -19,22 +19,32 @@ public class ProgressActivity extends AppCompatActivity {
 
         while(!isComplete)
         {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }).start();
+            run();
             i++;
             if(i==5)
             {
                 isComplete=true;
             }
             progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

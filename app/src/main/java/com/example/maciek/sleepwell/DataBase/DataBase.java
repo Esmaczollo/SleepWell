@@ -32,13 +32,13 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String COLUMNN_ALL_DREAMS_TABLE_PHASE_OF_AWAKENING = "PHASE_OF_AWAKENING";
 
     //SQL statement of UserTable creation
-    public static final String SQL_CREATE_TABLE_USER_TABLE= "CREATE TABLE " + TABLE_USER_TABLE + "("
+    private static final String SQL_CREATE_TABLE_USER_TABLE= "CREATE TABLE " + TABLE_USER_TABLE + "("
             + COLUMNN_USER_TABLE_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMNN_USER_TABLE_USER_NAME + " TEXT"
             + ");";
 
     //SQL statement of AllDreamsTable creation
-    public static final String SQL_CREATE_TABLE_ALL_DREAMS_TABLE = "CREATE TABLE " + TABLE_ALL_DREAMS_TABLE + "("
+    private static final String SQL_CREATE_TABLE_ALL_DREAMS_TABLE = "CREATE TABLE " + TABLE_ALL_DREAMS_TABLE + "("
             + COLUMNN_ALL_DREAMS_TABLE_SLEEP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMNN_ALL_DREAMS_TABLE_AVERANGE_REM_TIME + " REAL NOT NULL, "
             + COLUMNN_ALL_DREAMS_TABLE_AVERANGE_NREM_TIME + " REAL NOT NULL, "
@@ -74,26 +74,3 @@ public class DataBase extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
-
-
-//columns of the CurrentDreamTable
-//    public static final String TABLE_CURRENT_DREAM_TABLE = "CURRENT_DREAM_TABLE";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_SAMPLE_ID = "SAMPLE_ID";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_AMPLITUDE_OF_BREATH = "AMPLITUDE_OF_BREATH";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_DATE_OF_BREATH = "DATE_OF_BREATH";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_TYPE_OF_SLEEP_PHASE = "TYPE_OF_SLEEP_PHASE";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_WHERE_WE_ARE_IN_PHASE = "WHERE_WE_ARE_IN_PHASE";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_TREND = "TREND";
-//    public static final String COLUMN_CURRENT_DREAM_TABLE_SLEEP_ID = "SLEEP_ID";
-
-
-//SQL statement of CurrentDreamTable creation
-//    public static final String SQL_CREATE_TABLE_CURRENT_DREAM_TABLE = "CREATE TABLE " + TABLE_CURRENT_DREAM_TABLE + "("
-//            + COLUMN_CURRENT_DREAM_TABLE_SAMPLE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-//            + COLUMN_CURRENT_DREAM_TABLE_AMPLITUDE_OF_BREATH + " REAL NOT NULL, "
-//            + COLUMN_CURRENT_DREAM_TABLE_DATE_OF_BREATH + " DATE NOT NULL, "
-//            + COLUMN_CURRENT_DREAM_TABLE_TYPE_OF_SLEEP_PHASE + " TEXT NOT NULL, "
-//            + COLUMN_CURRENT_DREAM_TABLE_WHERE_WE_ARE_IN_PHASE + " REAL NOT NULL, "
-//            + COLUMN_CURRENT_DREAM_TABLE_TREND + " TEXT NOT NULL, "
-//            + COLUMN_CURRENT_DREAM_TABLE_SLEEP_ID + " INTEGER NOT NULL "
-//            + ");";

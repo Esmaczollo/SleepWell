@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -22,20 +23,25 @@ import com.example.maciek.sleepwell.MainActivity.Fragments.AlarmFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.SettingsFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.StatisticsFragment;
 import com.example.maciek.sleepwell.R;
+import com.example.maciek.sleepwell.SleepingActivity.SleepingMonitor;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+import java.util.Timer;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonUserTable;
-    private Button buttonAllDreamsTableTable;
     private Button buttonCurrentDreamTable;
     private Button buttonCreateDataBase;
 
     private DataBase dataBase;
     private UserTable userTable;
     private AllDreamsTable allDreamsTable;
+
+    SleepingMonitor sleepingMonitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +52,14 @@ public class MainActivity extends AppCompatActivity {
         /*  TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST*/
 
         buttonUserTable = (Button) findViewById(R.id.buttonUserTable);
-        buttonAllDreamsTableTable = (Button) findViewById(R.id.buttonAllDreamsTableTable);
         buttonCurrentDreamTable = (Button) findViewById(R.id.buttonCurrentDreamTable);
         buttonCreateDataBase = (Button) findViewById(R.id.buttonCreateDataBase);
 
         dataBase = new DataBase(this);
         userTable = new UserTable(dataBase);
         allDreamsTable = new AllDreamsTable(dataBase);
+
+        sleepingMonitor = new SleepingMonitor(MainActivity.this);
 
         buttonUserTable.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,51 +104,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonAllDreamsTableTable.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View v) {
-                boolean isUpdated = userTable.updateDate(1, "Maciek - UPDATE");
-                if(isUpdated == true)
-                {
-                    Toast.makeText(MainActivity.this, "Data updated correctly", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Error while updating data", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
         buttonCurrentDreamTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer deletedRows = userTable.deleteData(1);
-                if(deletedRows > 0)
-                {
-                    Toast.makeText(MainActivity.this, "Some row was deleted", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "No row deleted", Toast.LENGTH_SHORT).show();
-                }
+                sleepingMonitor.showAmp();
             }
         });
 
         buttonCreateDataBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Kliknelo buttonCreateDataBase");
-                Random rand = new Random();
-                int randInt = rand.nextInt(100);
-                String rowContent = "Maciek - " + randInt;
-                boolean isInsertedUserTable = userTable.insertData(rowContent);
-                boolean isInsertedAllDreamsTable = allDreamsTable.insertData(21.65, 2312.12312, 2.0, 0.666666, 9, 1856, "201708102245","201708110633", "REM");
-
-                if(isInsertedUserTable == true && isInsertedAllDreamsTable == true){
-                    Toast.makeText(MainActivity.this, "Data inserted correctly", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(MainActivity.this, "Error while inserting data", Toast.LENGTH_SHORT).show();
+                try {
+                    sleepingMonitor.startRecording();
+                    Timer timer = new Timer();
+                    timer.scheduleAtFixedRate(sleepingMonitor,0,100); //gets sample 10 times per second
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
             }

@@ -48,42 +48,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
-        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.3.1_92f849e58d67f17ac22091130179ae35f03ca769.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_0a1f4564b698cd9b7b4e897886c6ef3880704aea.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_425024a87244de45d7d98f34bf7428b5778889d2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_8cfa60d3f67efac36f77eb0591a441484ded0ccc.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -102,6 +66,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.3.1_92f849e58d67f17ac22091130179ae35f03ca769.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -111,11 +84,20 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_0a1f4564b698cd9b7b4e897886c6ef3880704aea.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="90cd8c58f72988408e9da8959e745928b16cce40">
+        sha1="5901a50c07253e869c785f4dc2d948a257c71e6f">
         <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\instant-run_971982fcf7fe91540229f36912b2d96753c90669.jar" />
     </item>
     <item
@@ -142,8 +124,26 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="030edf154cf068ea2f5603ebee13b2281a0febce">
+        sha1="62f6c5b795b8d5bcf4bbd2c0670fa929c2abc183">
         <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7b90e8cafb640497984285bc0338d7a51e0b515b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_425024a87244de45d7d98f34bf7428b5778889d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_8cfa60d3f67efac36f77eb0591a441484ded0ccc.jar" />
     </item>
 
 </items>

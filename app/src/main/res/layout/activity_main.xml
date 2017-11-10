@@ -30,16 +30,6 @@
         />
 
     <Button
-        android:id="@+id/buttonAllDreamsTableTable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AllDreamsTableTable"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="330dp"
-        android:textSize="12dp"
-        />
-
-    <Button
         android:id="@+id/buttonCurrentDreamTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,7 +43,7 @@
         android:id="@+id/buttonCreateDataBase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insert Into"
+        android:text="CreateDatabase"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="410dp"
         android:textSize="12dp"
