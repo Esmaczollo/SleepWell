@@ -43,8 +43,7 @@ public class UserTable {
         return cursor;
     }
 
-    public boolean insertData(String userName)
-    {
+    public boolean insertData(String userName){
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(DataBase.COLUMNN_USER_TABLE_USER_NAME, userName);
@@ -57,8 +56,7 @@ public class UserTable {
         }
     }
 
-    public boolean updateDate(int userID, String userName)
-    {
+    public boolean updateDate(int userID, String userName){
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(DataBase.COLUMNN_USER_TABLE_USER_NAME, userName);
@@ -67,8 +65,7 @@ public class UserTable {
         return true;
     }
 
-    public Integer deleteData(int userID)
-    {
+    public Integer deleteData(int userID){
         return mSQLiteDatabase.delete(DataBase.TABLE_USER_TABLE, DataBase.COLUMNN_USER_TABLE_USER_ID + " = ?", new String[] {Integer.toString(userID)});
     }
 

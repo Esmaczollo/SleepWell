@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.maciek.sleepwell.R;
-import com.jjoe64.graphview.DefaultLabelFormatter;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.helper.StaticLabelsFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+//import com.jjoe64.graphview.DefaultLabelFormatter;
+//import com.jjoe64.graphview.GraphView;
+//import com.jjoe64.graphview.GridLabelRenderer;
+//import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+//import com.jjoe64.graphview.series.DataPoint;
+//import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ import java.util.Random;
  */
 
 public class StatisticsFragment extends Fragment {
-
+/*
     LineGraphSeries<DataPoint> inputData;
     GraphView graphStatisticsView;
     public int numberOfInputData;
@@ -122,5 +122,5 @@ public class StatisticsFragment extends Fragment {
 
 
         graphStatisticsView.getGridLabelRenderer().reloadStyles();
-    }
+    }*/
 }

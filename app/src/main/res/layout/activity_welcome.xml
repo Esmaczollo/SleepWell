@@ -10,8 +10,8 @@
 
     <TextView
         android:text="SleepWell"
+        android:textColor="@color/textColor"
         android:textSize="60dp"
-        android:textColor="#AA000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
