@@ -14,7 +14,7 @@ import com.example.maciek.sleepwell.MainActivity.Fragments.AlarmFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.SettingsFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.StatisticsFragment;
 import com.example.maciek.sleepwell.R;
-import com.example.maciek.sleepwell.SleepingActivity.SleepingMonitor;
+import com.example.maciek.sleepwell.SleepingActivity.AudioMonitor;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -32,49 +32,53 @@ public class MainActivity extends AppCompatActivity {
 
     private DataBase dataBase;
     private LineChart mChart;
-    private SleepingMonitor sleepingMonitor;
+    private static AudioMonitor audioMonitor;
+    public static Thread audioRecording;
 
+    public static boolean isBackToMainActivity;
+    public static final Object lock = new Object();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         dataBase = new DataBase(this);
-        sleepingMonitor = new SleepingMonitor(MainActivity.this);
+        audioMonitor = new AudioMonitor();
         try {
-            sleepingMonitor.startRecording();
+            audioMonitor.prepareRecording();
+            audioMonitor.startRecording();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         createChart();
-
-
-        new Thread(new Runnable() {
+        isBackToMainActivity = true;
+        audioRecording = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            addEntry(sleepingMonitor.getMaxAmplitudeDB());
-                        }
-                    });
-
+                    addEntry(audioMonitor.getMaxAmplitude());
                     try {
                         Thread.sleep(75);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
+                    if(!MainActivity.isBackToMainActivity){
+                        synchronized(lock) {
+                            try {
+                                lock.wait();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 }
             }
-        }).start();
+        });
 
-
-        /*  TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST    TEST*/
-
+        audioRecording.start();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -106,12 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        finish();
+    public static AudioMonitor getAudioMonitor(){
+        return audioMonitor;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         legend.setForm(Legend.LegendForm.LINE);
         legend.setTextColor(Color.WHITE);
+        legend.setEnabled(false);
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTextColor(Color.WHITE);
@@ -152,22 +154,19 @@ public class MainActivity extends AppCompatActivity {
         leftAxis.setTextColor(Color.WHITE);
         leftAxis.setDrawGridLines(false);
         leftAxis.setEnabled(false);
-        leftAxis.setAxisMaximum(100f);
+        //leftAxis.setAxisMaximum(20000);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
 
-        /*Cos z tym trzeba zrobić*/
-        mChart.setAutoScaleMinMaxEnabled(false);
-        //mChart.setVisibleYRangeMaximum(2000f, YAxis.AxisDependency.LEFT);
+        mChart.setAutoScaleMinMaxEnabled(true);
     }
 
     int avgValue = 0;
 
-    private void addEntry(float newData){
-//        System.out.println(newData); ///asdddddddddddddddddddddddddddddddddddddddddddddddasdasdasd
-        System.out.println(mChart.getYChartMax()); ///asdddddddddddddddddddddddddddddddddddddddddddddddasdasdasd
-        mChart.getAxisLeft().resetAxisMaximum();
+    private void  addEntry(float newData){
+//        System.out.println(mChart.getYChartMax()); ///asdddddddddddddddddddddddddddddddddddddddddddddddasdasdasd
+        //mChart.getAxisLeft().resetAxisMaximum();
 
         LineData data = mChart.getData();
         if(data != null){
@@ -178,12 +177,12 @@ public class MainActivity extends AppCompatActivity {
             }
             data.addEntry(new Entry(set.getEntryCount(), newData), 0);
             data.notifyDataChanged();
-            ++avgValue;
-            if(avgValue==40){
-                mChart.getAxisLeft().resetAxisMaximum();
-                mChart.getAxisLeft().resetAxisMinimum();
-                avgValue=0;
-            }
+//            ++avgValue;
+//            if(avgValue==40){
+//                mChart.getAxisLeft().resetAxisMaximum();
+//                mChart.getAxisLeft().resetAxisMinimum();
+//                avgValue=0;
+//            }
 
 
             mChart.notifyDataSetChanged();
@@ -199,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
         set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set.setDrawValues(false);
         set.setDrawCircles(false);
+
 
         set.setColor(Color.argb(175,255,255,255));
         set.setLineWidth(3f);

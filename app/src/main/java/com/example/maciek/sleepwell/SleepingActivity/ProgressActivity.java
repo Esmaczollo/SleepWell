@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ProgressActivity extends AppCompatActivity implements Runnable{
 
     ProgressBar progressBar;
-    SleepingMonitor sleepingMonitor;
+    AudioMonitor audioMonitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,9 @@ public class ProgressActivity extends AppCompatActivity implements Runnable{
         setContentView(R.layout.activity_progress);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        sleepingMonitor = new SleepingMonitor(ProgressActivity.this);
+        audioMonitor = new AudioMonitor();
         try {
-            sleepingMonitor.startRecording();
+            audioMonitor.startRecording();
         } catch (IOException e) {
             e.printStackTrace();
         }

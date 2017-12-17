@@ -4,8 +4,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Paint;
-import android.icu.util.GregorianCalendar;
-import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -18,6 +16,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.maciek.sleepwell.MainActivity.MainActivity;
 import com.example.maciek.sleepwell.R;
 import com.example.maciek.sleepwell.SleepingActivity.SleepingActivity;
 
@@ -53,12 +52,11 @@ public class AlarmFragment extends Fragment {
     public void onViewCreated(View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.alarm_fragment);
-
+        MainActivity.isBackToMainActivity = false;
         setAlarmButton = (Button)view.findViewById(R.id.setAlarm);
         timePicker = (TimePicker)view.findViewById(R.id.timePicker);
         wakeUpTV = (TextView)view.findViewById(R.id.wakeUpTV);
         timeOfSleepTV = (TextView)view.findViewById(R.id.timeOfSleepTV);
-
 
         setAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,10 +64,13 @@ public class AlarmFragment extends Fragment {
                 int firstIndex = firstTimeOfWakeUp.indexOf("beetwen") + 8;
                 int lastIndex = firstTimeOfWakeUp.length();
 
+                MainActivity.isBackToMainActivity = false;
                 Intent intent = new Intent(getActivity(),SleepingActivity.class).putExtra("firstTimeOfWakeUp", firstTimeOfWakeUp.substring(firstIndex, lastIndex)); // This is not working in class witch extends Fragment
                 startActivity(intent);
             }
         });
+        MainActivity.isBackToMainActivity = true;
+
         setTimepickerTextColour();
         timePickerVisualChanges();
         hourOfWakeUp();
