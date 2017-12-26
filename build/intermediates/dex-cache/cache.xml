@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ee22d773a4699209568ca6c6e7f3125df38ffdc6">
+        sha1="cbf550b09f75d2148334a4c078d29b9aa4d14aba">
         <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\instant-run_971982fcf7fe91540229f36912b2d96753c90669.jar" />
     </item>
     <item
@@ -142,7 +142,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="e632e9f832f864a8411aa0a08d31c7aaa8b41f30">
+        sha1="d61ba7d9ae63a8ce2a74f5819bb813c093e9becb">
         <dex dex="D:\Programowanie\AaaProjects\AndroidProjects\SleepWell\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7b90e8cafb640497984285bc0338d7a51e0b515b.jar" />
     </item>
 

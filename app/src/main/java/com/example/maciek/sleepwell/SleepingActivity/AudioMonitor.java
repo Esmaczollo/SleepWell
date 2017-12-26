@@ -46,8 +46,6 @@ public class AudioMonitor extends TimerTask{
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         mediaRecorder.setOutputFile(OUTPUT_FILE);
         mediaRecorder.prepare();
-
-        //timer.scheduleAtFixedRate(this,0,50); //gets sample 20 times per second
     }
 
     public void startRecording() throws IOException {
@@ -64,6 +62,7 @@ public class AudioMonitor extends TimerTask{
     }
 
     public float getMaxAmplitude(){
+
         return mediaRecorder.getMaxAmplitude();
     }
 

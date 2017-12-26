@@ -15,6 +15,7 @@ import com.example.maciek.sleepwell.MainActivity.Fragments.SettingsFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.StatisticsFragment;
 import com.example.maciek.sleepwell.R;
 import com.example.maciek.sleepwell.SleepingActivity.AudioMonitor;
+import com.example.maciek.sleepwell.SleepingActivity.BreathMonitor;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         dataBase = new DataBase(this);
         audioMonitor = new AudioMonitor();
         try {
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        BreathMonitor breathMonitor = new BreathMonitor();
+        breathMonitor.startBreathMonitor();
 
         createChart();
         isBackToMainActivity = true;
@@ -108,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public static AudioMonitor getAudioMonitor(){
@@ -146,14 +152,14 @@ public class MainActivity extends AppCompatActivity {
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawGridLines(false);
+        xAxis.setDrawGridLines(true); //zmiana
         xAxis.setAvoidFirstLastClipping(false);
-        xAxis.setEnabled(false);
+        xAxis.setEnabled(true); //zmiana
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setDrawGridLines(false);
-        leftAxis.setEnabled(false);
+        leftAxis.setDrawGridLines(true); //zmiana
+        leftAxis.setEnabled(true); //zmiana
         //leftAxis.setAxisMaximum(20000);
 
         YAxis rightAxis = mChart.getAxisRight();
@@ -162,33 +168,25 @@ public class MainActivity extends AppCompatActivity {
         mChart.setAutoScaleMinMaxEnabled(true);
     }
 
-    int avgValue = 0;
-
     private void  addEntry(float newData){
-//        System.out.println(mChart.getYChartMax()); ///asdddddddddddddddddddddddddddddddddddddddddddddddasdasdasd
-        //mChart.getAxisLeft().resetAxisMaximum();
 
-        LineData data = mChart.getData();
-        if(data != null){
-            ILineDataSet set = data.getDataSetByIndex(0);
-            if(set == null){
-                set = createSet();
-                data.addDataSet(set);
+            LineData data = mChart.getData();
+            if (data != null) {
+                ILineDataSet set = data.getDataSetByIndex(0);
+                if (set == null) {
+                    set = createSet();
+                    data.addDataSet(set);
+                }
+                data.addEntry(new Entry(set.getEntryCount(), newData), 0);
+                data.notifyDataChanged();
+
+
+
+                mChart.notifyDataSetChanged();
+                mChart.setVisibleXRangeMaximum(40);
+                mChart.moveViewTo(data.getEntryCount() - 39, 0f, YAxis.AxisDependency.LEFT);
             }
-            data.addEntry(new Entry(set.getEntryCount(), newData), 0);
-            data.notifyDataChanged();
-//            ++avgValue;
-//            if(avgValue==40){
-//                mChart.getAxisLeft().resetAxisMaximum();
-//                mChart.getAxisLeft().resetAxisMinimum();
-//                avgValue=0;
-//            }
 
-
-            mChart.notifyDataSetChanged();
-            mChart.setVisibleXRangeMaximum(40);
-            mChart.moveViewTo(data.getEntryCount() - 39, 0f, YAxis.AxisDependency.LEFT);
-        }
     }
 
     private LineDataSet createSet(){

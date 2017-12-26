@@ -34,7 +34,7 @@ public class SleepingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         extraString = intent.getStringExtra("firstTimeOfWakeUp");
 
-        breathMonitor = new BreathMonitor();
+        //breathMonitor = new BreathMonitor();
 
         swapButton = (Button) findViewById(R.id.swapButton);
         textClock = (TextClock)findViewById(R.id.textClock);
