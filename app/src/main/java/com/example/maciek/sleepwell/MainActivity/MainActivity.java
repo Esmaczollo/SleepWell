@@ -1,6 +1,7 @@
 package com.example.maciek.sleepwell.MainActivity;
 
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -15,7 +16,6 @@ import com.example.maciek.sleepwell.MainActivity.Fragments.SettingsFragment;
 import com.example.maciek.sleepwell.MainActivity.Fragments.StatisticsFragment;
 import com.example.maciek.sleepwell.R;
 import com.example.maciek.sleepwell.SleepingActivity.AudioMonitor;
-import com.example.maciek.sleepwell.SleepingActivity.BreathMonitor;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -26,18 +26,22 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.IOException;
+import java.util.Timer;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private DataBase dataBase;
+    public static DataBase dataBase;
     private LineChart mChart;
     private static AudioMonitor audioMonitor;
     public static Thread audioRecording;
 
     public static boolean isBackToMainActivity;
     public static final Object lock = new Object();
+
+    public static Runnable runnable;
+    public static Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,36 +57,33 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        BreathMonitor breathMonitor = new BreathMonitor();
-        breathMonitor.startBreathMonitor();
+
 
         createChart();
         isBackToMainActivity = true;
-        audioRecording = new Thread(new Runnable() {
+
+        handler = new Handler();
+        audioRecording = new Thread(runnable = new Runnable() {
             @Override
             public void run() {
-                while(true){
-                    addEntry(audioMonitor.getMaxAmplitude());
-                    try {
-                        Thread.sleep(75);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                addEntry(audioMonitor.getMaxAmplitude());
+                handler.postDelayed(this, 75);
 
-                    if(!MainActivity.isBackToMainActivity){
-                        synchronized(lock) {
-                            try {
-                                lock.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                if(!MainActivity.isBackToMainActivity){
+                    synchronized(lock) {
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
                     }
                 }
+
             }
         });
-
         audioRecording.start();
+
+
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     public static AudioMonitor getAudioMonitor(){
         return audioMonitor;
@@ -152,15 +154,15 @@ public class MainActivity extends AppCompatActivity {
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawGridLines(true); //zmiana
+        xAxis.setDrawGridLines(false); //zmiana
         xAxis.setAvoidFirstLastClipping(false);
-        xAxis.setEnabled(true); //zmiana
+        xAxis.setEnabled(false); //zmiana
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setDrawGridLines(true); //zmiana
-        leftAxis.setEnabled(true); //zmiana
-        //leftAxis.setAxisMaximum(20000);
+        leftAxis.setDrawGridLines(false); //zmiana
+        leftAxis.setEnabled(false); //zmiana
+        //leftAxis.setAxisMaximum(1000);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);

@@ -31,6 +31,13 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String COLUMNN_ALL_DREAMS_TABLE_SLEEP_STOP_DATE = "SLEEP_STOP_DATE";
     public static final String COLUMNN_ALL_DREAMS_TABLE_PHASE_OF_AWAKENING = "PHASE_OF_AWAKENING";
 
+    //colums of the OneDreamTable
+    public static final String TABLE_ONE_DREAM_TABLE = "ONE_DREAM_TABLE";
+    public static final String COLUMNN_ONE_DREAM_TABLE_ROW_ID = "PRIMARY_KEY_ID ";
+    public static final String COLUMNN_ONE_DREAM_TABLE_SLEEP_ID = "SLEEP_ID";
+    public static final String COLUMNN_ONE_DREAM_TABLE_PHASE_TIME= "PHASE_TIME";
+    public static final String COLUMNN_ONE_DREAM_TABLE_PHASE_TYPE = "PHASE_TYPE";
+
     //SQL statement of UserTable creation
     private static final String SQL_CREATE_TABLE_USER_TABLE= "CREATE TABLE " + TABLE_USER_TABLE + "("
             + COLUMNN_USER_TABLE_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -51,6 +58,14 @@ public class DataBase extends SQLiteOpenHelper {
             + COLUMNN_ALL_DREAMS_TABLE_PHASE_OF_AWAKENING + " TEXT NOT NULL"
             + ");";
 
+    //SQL statement of OneDreamTable creation
+    private static final String SQL_CREATE_TABLE_ONE_DREAM_TABLE= "CREATE TABLE " + TABLE_ONE_DREAM_TABLE + "("
+            + COLUMNN_ONE_DREAM_TABLE_ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMNN_ONE_DREAM_TABLE_SLEEP_ID + " INTEGER, "
+            + COLUMNN_ONE_DREAM_TABLE_PHASE_TIME + " TEXT"
+            + COLUMNN_ONE_DREAM_TABLE_PHASE_TYPE + " TEXT"
+            + ");";
+
 
 
     public static final String DATABASE_NAME ="DataBase.db";
@@ -65,12 +80,52 @@ public class DataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_USER_TABLE);
         db.execSQL(SQL_CREATE_TABLE_ALL_DREAMS_TABLE);
+        db.execSQL(SQL_CREATE_TABLE_ONE_DREAM_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALL_DREAMS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ONE_DREAM_TABLE);
         onCreate(db);
+    }
+    /**
+     * Metoda pozwalająca wpisać dane do bazy
+     * @param SLEEP_ID
+     * @param PHASE_TIME
+     * @param PHASE_TYPE
+     * @return
+     */
+    public boolean insertDataToOneDreamTable(String SLEEP_ID, String PHASE_TIME, String PHASE_TYPE){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMNN_ONE_DREAM_TABLE_SLEEP_ID,SLEEP_ID);
+        contentValues.put(COLUMNN_ONE_DREAM_TABLE_PHASE_TIME,PHASE_TIME);
+        contentValues.put(COLUMNN_ONE_DREAM_TABLE_PHASE_TYPE,PHASE_TYPE);
+        long result = database.insert(TABLE_ONE_DREAM_TABLE, null, contentValues);
+        if(result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public int getMaxSleepIDFromOneDreamTable(){
+        String sqlQuery = "SELECT MAX(" + COLUMNN_ONE_DREAM_TABLE_SLEEP_ID + ")" + " FROM " + TABLE_ONE_DREAM_TABLE;
+//                + " ORDER BY " + COLUMNN_ONE_DREAM_TABLE_SLEEP_ID + " DESC";
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        Cursor cursor = database.rawQuery(sqlQuery, null);
+        int maxId = 0;
+        if (cursor.moveToFirst()) {
+            maxId = cursor.getInt(0);
+            return maxId;
+        }
+        else        {
+            return maxId;
+        }
+
     }
 }

@@ -18,7 +18,7 @@ import java.util.TimerTask;
  * Created by Maciek on 10.11.2017.
  */
 
-public class AudioMonitor extends TimerTask{
+public class AudioMonitor{
 
     private MediaRecorder mediaRecorder;
     private Timer timer;
@@ -62,17 +62,20 @@ public class AudioMonitor extends TimerTask{
     }
 
     public float getMaxAmplitude(){
-
+//        int amp = mediaRecorder.getMaxAmplitude();
+//
+//        if(amp<500){
+//            return amp;
+//        }
+//        else{
+//            return (50*amp + 1872500)/3795;
+//        }
         return mediaRecorder.getMaxAmplitude();
+
     }
 
     public MediaRecorder getMediaRecorder(){
         return mediaRecorder;
     }
 
-
-    @Override
-    public void run() {
-
-    }
 }
